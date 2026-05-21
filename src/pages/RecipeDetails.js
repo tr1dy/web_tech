@@ -1,0 +1,104 @@
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { fetchMealById } from '../api/api';
+import { FavoritesContext } from '../context/FavoritesContext';
+import { AuthContext } from '../context/AuthContext';
+import { FaHeart, FaRegHeart, FaArrowLeft } from 'react-icons/fa';
+import './RecipeDetails.css';
+
+const RecipeDetails = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [meal, setMeal] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    const loadMeal = async () => {
+      setLoading(true);
+      const data = await fetchMealById(id);
+      setMeal(data);
+      setLoading(false);
+    };
+    loadMeal();
+  }, [id]);
+
+  const handleToggleFavorite = () => {
+    if (!user) {
+      alert("Please login to save favorites!");
+      return;
+    }
+    if (isFavorite(meal.idMeal)) {
+      removeFavorite(meal.idMeal);
+    } else {
+      addFavorite(meal);
+    }
+  };
+
+  if (loading) return <div className="loading-state">Loading recipe details...</div>;
+  if (!meal) return <div className="error-state">Recipe not found!</div>;
+
+  // Extract ingredients and measurements
+  const ingredients = [];
+  for (let i = 1; i <= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+      ingredients.push(
+        `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
+      );
+    } else {
+      break;
+    }
+  }
+
+  return (
+    <div className="recipe-details-container">
+      <button className="back-btn" onClick={() => navigate(-1)}>
+        <FaArrowLeft /> Back
+      </button>
+
+      <div className="recipe-header">
+        <img src={meal.strMealThumb} alt={meal.strMeal} className="detail-image" />
+        <div className="recipe-title-section">
+          <h2>{meal.strMeal}</h2>
+          <p className="tags">{meal.strCategory} | {meal.strArea}</p>
+          <button className="favorite-action-btn" onClick={handleToggleFavorite}>
+            {isFavorite(meal.idMeal) ? (
+              <><FaHeart color="#ff5722" /> Remove from Favorites</>
+            ) : (
+              <><FaRegHeart /> Add to Favorites</>
+            )}
+          </button>
+        </div>
+      </div>
+
+      <div className="recipe-content">
+        <div className="ingredients">
+          <h3>Ingredients</h3>
+          <ul>
+            {ingredients.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div className="instructions">
+          <h3>Instructions</h3>
+          <p>{meal.strInstructions}</p>
+        </div>
+      </div>
+      
+      {meal.strYoutube && (
+        <div className="video-section">
+          <h3>Video Tutorial</h3>
+          <a href={meal.strYoutube} target="_blank" rel="noopener noreferrer" className="youtube-link">
+            Watch on YouTube
+          </a>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default RecipeDetails;
