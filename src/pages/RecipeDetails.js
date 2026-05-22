@@ -27,7 +27,7 @@ const RecipeDetails = () => {
 
   const handleToggleFavorite = () => {
     if (!user) {
-      alert("Please login to save favorites!");
+      alert("Пожалуйста, войдите, чтобы сохранить в избранное!");
       return;
     }
     if (isFavorite(meal.idMeal)) {
@@ -37,8 +37,8 @@ const RecipeDetails = () => {
     }
   };
 
-  if (loading) return <div className="loading-state">Loading recipe details...</div>;
-  if (!meal) return <div className="error-state">Recipe not found!</div>;
+  if (loading) return <div className="loading-state">Загрузка деталей рецепта...</div>;
+  if (!meal) return <div className="error-state">Рецепт не найден!</div>;
 
   // Extract ingredients and measurements
   const ingredients = [];
@@ -55,7 +55,7 @@ const RecipeDetails = () => {
   return (
     <div className="recipe-details-container">
       <button className="back-btn" onClick={() => navigate(-1)}>
-        <FaArrowLeft /> Back
+        <FaArrowLeft /> Назад
       </button>
 
       <div className="recipe-header">
@@ -65,9 +65,9 @@ const RecipeDetails = () => {
           <p className="tags">{meal.strCategory} | {meal.strArea}</p>
           <button className="favorite-action-btn" onClick={handleToggleFavorite}>
             {isFavorite(meal.idMeal) ? (
-              <><FaHeart color="#ff5722" /> Remove from Favorites</>
+              <><FaHeart color="#ff5722" /> Удалить из избранного</>
             ) : (
-              <><FaRegHeart /> Add to Favorites</>
+              <><FaRegHeart /> Добавить в избранное</>
             )}
           </button>
         </div>
@@ -75,7 +75,7 @@ const RecipeDetails = () => {
 
       <div className="recipe-content">
         <div className="ingredients">
-          <h3>Ingredients</h3>
+          <h3>Ингредиенты</h3>
           <ul>
             {ingredients.map((item, index) => (
               <li key={index}>{item}</li>
@@ -84,16 +84,16 @@ const RecipeDetails = () => {
         </div>
         
         <div className="instructions">
-          <h3>Instructions</h3>
+          <h3>Инструкции</h3>
           <p>{meal.strInstructions}</p>
         </div>
       </div>
       
       {meal.strYoutube && (
         <div className="video-section">
-          <h3>Video Tutorial</h3>
+          <h3>Видеоурок</h3>
           <a href={meal.strYoutube} target="_blank" rel="noopener noreferrer" className="youtube-link">
-            Watch on YouTube
+            Смотреть на YouTube
           </a>
         </div>
       )}

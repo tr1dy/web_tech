@@ -26,7 +26,7 @@ const Home = () => {
 
   const handleToggleFavorite = (meal) => {
     if (!user) {
-      alert("Please login to save favorites!");
+      alert("Пожалуйста, войдите, чтобы сохранить в избранное!");
       return;
     }
     
@@ -38,14 +38,14 @@ const Home = () => {
   };
 
   if (loading) {
-    return <div className="loading-state">Loading delicious meals...</div>;
+    return <div className="loading-state">Загрузка вкусных рецептов...</div>;
   }
 
   return (
     <div className="home-container">
       <div className="hero-section">
-        <h1>Discover Delicious Recipes</h1>
-        <p>Find the best recipes for your daily meals or special occasions.</p>
+        <h1>Откройте для себя вкусные рецепты</h1>
+        <p>Найдите лучшие рецепты для повседневных блюд или особых случаев.</p>
       </div>
       
       <div className="recipes-grid">

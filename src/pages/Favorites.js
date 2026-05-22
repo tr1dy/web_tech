@@ -17,8 +17,8 @@ const Favorites = () => {
   if (!user) {
     return (
       <div className="favorites-container empty-state">
-        <h2>You are not logged in!</h2>
-        <p>Please <Link to="/login">login</Link> to view and manage your favorite recipes.</p>
+        <h2>Вы не авторизованы!</h2>
+        <p>Пожалуйста, <Link to="/login">войдите</Link>, чтобы просматривать и управлять избранными рецептами.</p>
       </div>
     );
   }
@@ -26,14 +26,14 @@ const Favorites = () => {
   return (
     <div className="favorites-container">
       <div className="favorites-header">
-        <h2>Your Favorite Recipes</h2>
-        <p>You have {favorites.length} saved recipes.</p>
+        <h2>Ваши избранные рецепты</h2>
+        <p>У вас {favorites.length} сохраненных рецептов.</p>
       </div>
 
       {favorites.length === 0 ? (
         <div className="empty-state">
-          <h3>No favorites yet.</h3>
-          <p>Go to the <Link to="/search">Search</Link> page to find some delicious meals to save!</p>
+          <h3>Пока нет избранного.</h3>
+          <p>Перейдите на страницу <Link to="/search">Поиска</Link>, чтобы найти вкусные рецепты для сохранения!</p>
         </div>
       ) : (
         <div className="recipes-grid">

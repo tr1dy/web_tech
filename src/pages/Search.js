@@ -45,7 +45,7 @@ const Search = () => {
 
   const handleToggleFavorite = (meal) => {
     if (!user) {
-      alert("Please login to save favorites!");
+      alert("Пожалуйста, войдите, чтобы сохранить в избранное!");
       return;
     }
     if (isFavorite(meal.idMeal)) {
@@ -58,21 +58,21 @@ const Search = () => {
   return (
     <div className="search-container">
       <div className="search-header">
-        <h2>Search Recipes</h2>
+        <h2>Поиск рецептов</h2>
         <form onSubmit={handleSearchSubmit} className="search-form">
           <input 
             type="text" 
-            placeholder="Type a meal name (e.g., Arrabiata)..." 
+            placeholder="Введите название блюда (например, Arrabiata)..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
-          <button type="submit" className="search-button">Search</button>
+          <button type="submit" className="search-button">Искать</button>
         </form>
       </div>
 
       <div className="categories-section">
-        <h3>Or browse by category</h3>
+        <h3>Или выберите категорию</h3>
         <div className="categories-list">
           {categories.map(cat => (
             <button 
@@ -88,7 +88,7 @@ const Search = () => {
 
       <div className="results-section">
         {loading ? (
-          <div className="loading-state">Searching...</div>
+          <div className="loading-state">Поиск...</div>
         ) : (
           <>
             {meals && meals.length > 0 ? (
@@ -104,7 +104,7 @@ const Search = () => {
               </div>
             ) : (
               <div className="no-results">
-                {activeCategory || searchTerm ? "No recipes found. Try another search!" : "Enter a search term or select a category to begin."}
+                {activeCategory || searchTerm ? "Рецепты не найдены. Попробуйте другой запрос!" : "Введите поисковый запрос или выберите категорию для начала."}
               </div>
             )}
           </>

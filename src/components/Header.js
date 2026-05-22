@@ -11,18 +11,18 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <FaUtensils /> RecipeApp
+          <FaUtensils /> Рецепты
         </Link>
         <nav className="nav-links">
-          <Link to="/"><FaUtensils /> Home</Link>
-          <Link to="/search"><FaSearch /> Search</Link>
-          <Link to="/favorites"><FaHeart /> Favorites</Link>
+          <Link to="/"><FaUtensils /> Главная</Link>
+          <Link to="/search"><FaSearch /> Поиск</Link>
+          <Link to="/favorites"><FaHeart /> Избранное</Link>
           {user ? (
             <Link to="/login" className="user-logged-in">
-              <FaSignOutAlt /> Profile ({user.username})
+              <FaSignOutAlt /> Профиль ({user.username})
             </Link>
           ) : (
-            <Link to="/login"><FaUser /> Login</Link>
+            <Link to="/login"><FaUser /> Войти</Link>
           )}
         </nav>
       </div>

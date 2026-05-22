@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!username.trim() || !password.trim()) {
-      setError('Please enter both username and password.');
+      setError('Пожалуйста, введите имя пользователя и пароль.');
       return;
     }
     
@@ -26,9 +26,9 @@ const Login = () => {
     return (
       <div className="login-container">
         <div className="login-box">
-          <h2>Welcome, {user.username}!</h2>
-          <p>You are currently logged in.</p>
-          <button className="logout-btn" onClick={logout}>Logout</button>
+          <h2>Добро пожаловать, {user.username}!</h2>
+          <p>Вы вошли в систему.</p>
+          <button className="logout-btn" onClick={logout}>Выйти</button>
         </div>
       </div>
     );
@@ -37,33 +37,33 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Login</h2>
-        <p>Please enter your details to access favorites.</p>
+        <h2>Войти</h2>
+        <p>Пожалуйста, введите свои данные для доступа к избранному.</p>
         
         {error && <div className="error-message">{error}</div>}
         
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Имя пользователя</label>
             <input 
               type="text" 
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
+              placeholder="Введите имя пользователя"
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Пароль</label>
             <input 
               type="password" 
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password (any)"
+              placeholder="Введите пароль (любой)"
             />
           </div>
-          <button type="submit" className="login-submit-btn">Login</button>
+          <button type="submit" className="login-submit-btn">Войти</button>
         </form>
       </div>
     </div>
