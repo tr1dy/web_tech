@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUtensils, FaSearch, FaHeart, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { FaBook, FaSearch, FaHeart, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../context/AuthContext';
 import './Header.css';
 
@@ -11,10 +11,10 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <FaUtensils /> Рецепты
+          <FaBook /> Каталог Книг
         </Link>
         <nav className="nav-links">
-          <Link to="/"><FaUtensils /> Главная</Link>
+          <Link to="/"><FaBook /> Главная</Link>
           <Link to="/search"><FaSearch /> Поиск</Link>
           <Link to="/favorites"><FaHeart /> Избранное</Link>
           {user ? (

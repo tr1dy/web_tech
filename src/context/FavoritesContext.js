@@ -4,29 +4,29 @@ export const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(() => {
-    const savedFavs = localStorage.getItem('favorites');
+    const savedFavs = localStorage.getItem('favorites_books');
     return savedFavs ? JSON.parse(savedFavs) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('favorites_books', JSON.stringify(favorites));
   }, [favorites]);
 
-  const addFavorite = (meal) => {
+  const addFavorite = (book) => {
     setFavorites((prev) => {
-      if (!prev.find(fav => fav.idMeal === meal.idMeal)) {
-        return [...prev, meal];
+      if (!prev.find(fav => fav.id === book.id)) {
+        return [...prev, book];
       }
       return prev;
     });
   };
 
-  const removeFavorite = (idMeal) => {
-    setFavorites((prev) => prev.filter(meal => meal.idMeal !== idMeal));
+  const removeFavorite = (id) => {
+    setFavorites((prev) => prev.filter(book => book.id !== id));
   };
 
-  const isFavorite = (idMeal) => {
-    return favorites.some(meal => meal.idMeal === idMeal);
+  const isFavorite = (id) => {
+    return favorites.some(book => book.id === id);
   };
 
   return (
