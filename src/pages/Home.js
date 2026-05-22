@@ -15,14 +15,28 @@ const Home = () => {
   useEffect(() => {
     const loadInitialBooks = async () => {
       setLoading(true);
-      // Fetch some popular books as initial display
-      const data = await fetchBooksByName('Гарри Поттер');
-      setBooks(data);
-      setLoading(false);
+      
+      try {
+        const searchPromises = [
+          fetchBooksByName('С++'),
+          fetchBooksByName('Виктор Пелевин'),
+          fetchBooksByName('Стивен Кинг')
+        ];
+
+        const results = await Promise.all(searchPromises);
+        let allBooks = results.flat();
+
+        setBooks(allBooks);
+      } catch (error) {
+        console.error("Ошибка при загрузке стартовых книг:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadInitialBooks();
   }, []);
+
 
   const handleToggleFavorite = (book) => {
     if (!user) {

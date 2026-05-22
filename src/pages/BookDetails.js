@@ -42,7 +42,7 @@ const BookDetails = () => {
 
   const title = book.volumeInfo?.title || 'Без названия';
   const author = book.volumeInfo?.authors?.join(', ') || 'Неизвестный автор';
-  const thumbnail = book.volumeInfo?.imageLinks?.thumbnail || 'https://via.placeholder.com/200x300.png?text=Нет+обложки';
+  const thumbnail = book.volumeInfo?.imageLinks?.thumbnail || 'https://placehold.co/200x300?text=Нет+обложки';
   const categories = book.volumeInfo?.categories?.join(', ') || 'Жанр не указан';
   const description = book.volumeInfo?.description || 'Описание отсутствует.';
   const pageCount = book.volumeInfo?.pageCount || 'Неизвестно';
@@ -62,7 +62,7 @@ const BookDetails = () => {
           className="detail-image" 
           onError={(e) => {
             e.target.onerror = null; 
-            e.target.src = 'https://via.placeholder.com/200x300.png?text=Нет+обложки';
+            e.target.src = 'https://placehold.co/200x300?text=Нет+обложки';
           }}
         />
         <div className="recipe-title-section">
@@ -97,7 +97,6 @@ const BookDetails = () => {
       
       {previewLink && (
         <div className="video-section">
-          <h3>Читать фрагмент</h3>
           <a href={previewLink} target="_blank" rel="noopener noreferrer" className="youtube-link">
             Предпросмотр в Open Library
           </a>
