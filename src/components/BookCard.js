@@ -12,7 +12,15 @@ const BookCard = ({ book, isFavorite, onToggleFavorite }) => {
   return (
     <div className="recipe-card">
       <Link to={`/book/${book.id}`} className="recipe-image-link">
-        <img src={thumbnail} alt={title} className="recipe-image" />
+        <img 
+          src={thumbnail} 
+          alt={title} 
+          className="recipe-image" 
+          onError={(e) => {
+            e.target.onerror = null; 
+            e.target.src = 'https://via.placeholder.com/128x192.png?text=Нет+обложки';
+          }}
+        />
       </Link>
       <div className="recipe-info">
         <h3 className="recipe-title">{title}</h3>

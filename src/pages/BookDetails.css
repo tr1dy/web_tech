@@ -35,9 +35,11 @@
 }
 
 .detail-image {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 250px;
+  height: 350px;
+  object-fit: contain;
+  background-color: #f5f5f5;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }

@@ -56,7 +56,15 @@ const BookDetails = () => {
       </button>
 
       <div className="recipe-header">
-        <img src={thumbnail} alt={title} className="detail-image" />
+        <img 
+          src={thumbnail} 
+          alt={title} 
+          className="detail-image" 
+          onError={(e) => {
+            e.target.onerror = null; 
+            e.target.src = 'https://via.placeholder.com/200x300.png?text=Нет+обложки';
+          }}
+        />
         <div className="recipe-title-section">
           <h2>{title}</h2>
           <p className="tags">{author} | {categories}</p>
@@ -91,7 +99,7 @@ const BookDetails = () => {
         <div className="video-section">
           <h3>Читать фрагмент</h3>
           <a href={previewLink} target="_blank" rel="noopener noreferrer" className="youtube-link">
-            Предпросмотр в Google Books
+            Предпросмотр в Open Library
           </a>
         </div>
       )}

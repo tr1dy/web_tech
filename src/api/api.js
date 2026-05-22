@@ -19,7 +19,7 @@ const mapOpenLibraryToBook = (doc) => {
 
 export const fetchBooksByName = async (name) => {
   try {
-    const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(name)}&limit=20`);
+    const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(name)}&limit=40`);
     const data = await response.json();
     return (data.docs || []).map(mapOpenLibraryToBook);
   } catch (error) {
@@ -79,7 +79,7 @@ export const fetchCategories = async () => {
 
 export const fetchBooksByCategory = async (category) => {
   try {
-    const response = await fetch(`https://openlibrary.org/search.json?subject=${encodeURIComponent(category)}&limit=20`);
+    const response = await fetch(`https://openlibrary.org/search.json?subject=${encodeURIComponent(category)}&limit=40`);
     const data = await response.json();
     return (data.docs || []).map(mapOpenLibraryToBook);
   } catch (error) {
