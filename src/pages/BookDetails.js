@@ -45,7 +45,6 @@ const BookDetails = () => {
   const thumbnail = book.volumeInfo?.imageLinks?.thumbnail || 'https://placehold.co/200x300?text=Нет+обложки';
   const categories = book.volumeInfo?.categories?.join(', ') || 'Жанр не указан';
   const description = book.volumeInfo?.description || 'Описание отсутствует.';
-  const pageCount = book.volumeInfo?.pageCount || 'Неизвестно';
   const publishedDate = book.volumeInfo?.publishedDate || 'Неизвестно';
   const previewLink = book.volumeInfo?.previewLink;
 
@@ -84,7 +83,6 @@ const BookDetails = () => {
           <ul>
             <li><strong>Автор:</strong> {author}</li>
             <li><strong>Год издания:</strong> {publishedDate}</li>
-            <li><strong>Кол-во страниц:</strong> {pageCount}</li>
             <li><strong>Жанры:</strong> {categories}</li>
           </ul>
         </div>

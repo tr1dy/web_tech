@@ -10,7 +10,6 @@ const mapOpenLibraryToBook = (doc) => {
       },
       categories: doc.subject ? doc.subject.slice(0, 3) : [],
       description: doc.first_sentence ? (typeof doc.first_sentence === 'string' ? doc.first_sentence : doc.first_sentence.value) : 'Описание отсутствует.',
-      pageCount: doc.number_of_pages_median || null,
       publishedDate: doc.first_publish_year ? String(doc.first_publish_year) : null,
       previewLink: `https://openlibrary.org/works/${id}`
     }
@@ -56,7 +55,6 @@ export const fetchBookById = async (id) => {
         },
         categories: doc.subjects ? doc.subjects.slice(0, 3) : [],
         description: doc.description ? (typeof doc.description === 'string' ? doc.description : doc.description.value) : 'Описание не предоставлено.',
-        pageCount: null,
         publishedDate: doc.first_publish_date || null,
         previewLink: `https://openlibrary.org/works/${id}`
       }

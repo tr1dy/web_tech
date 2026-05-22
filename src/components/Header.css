@@ -8,12 +8,11 @@
 }
 
 .header-container {
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .logo {
@@ -38,7 +37,6 @@
   gap: 0.3rem;
   font-weight: 500;
   transition: color 0.2s;
-  margin: 0
 }
 
 .nav-links a:hover {
