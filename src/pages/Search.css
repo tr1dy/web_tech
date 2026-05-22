@@ -28,7 +28,7 @@
 }
 
 .search-button {
-  background-color: #ff5722;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -73,9 +73,9 @@
 }
 
 .category-btn.active {
-  background-color: #ff5722;
+  background-color: #4caf50;
   color: white;
-  border-color: #ff5722;
+  border-color: #4caf50;
 }
 
 .no-results {

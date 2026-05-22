@@ -63,11 +63,11 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #ff5722;
+  border-color: #4caf50;
 }
 
 .login-submit-btn, .logout-btn {
-  background-color: #ff5722;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 1rem;
@@ -80,5 +80,5 @@
 }
 
 .login-submit-btn:hover, .logout-btn:hover {
-  background-color: #e64a19;
+  background-color: #0d7039;
 }

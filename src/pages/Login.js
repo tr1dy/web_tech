@@ -17,7 +17,6 @@ const Login = () => {
       return;
     }
     
-    // Simulate login success
     login(username);
     navigate('/');
   };

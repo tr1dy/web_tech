@@ -14,15 +14,15 @@ const Header = () => {
           <FaBook /> Каталог Книг
         </Link>
         <nav className="nav-links">
-          <Link to="/"><FaBook /> Главная</Link>
+          <Link to="/">Главная</Link>
           <Link to="/search"><FaSearch /> Поиск</Link>
           <Link to="/favorites"><FaHeart /> Избранное</Link>
           {user ? (
             <Link to="/login" className="user-logged-in">
-              <FaSignOutAlt /> Профиль ({user.username})
+              <FaUser /> Профиль
             </Link>
           ) : (
-            <Link to="/login"><FaUser /> Войти</Link>
+            <Link to="/login"><FaSignOutAlt /> Войти</Link>
           )}
         </nav>
       </div>
