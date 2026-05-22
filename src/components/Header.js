@@ -11,7 +11,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <FaBook /> Каталог Книг
+          <FaBook /> Книжный Каталог
         </Link>
         <nav className="nav-links">
           <Link to="/">Главная</Link>
