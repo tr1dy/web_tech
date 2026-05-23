@@ -10,23 +10,23 @@ const BookCard = ({ book, isFavorite, onToggleFavorite }) => {
   const categories = book.volumeInfo?.categories?.join(', ') || 'Жанр не указан';
 
   return (
-    <div className="recipe-card">
-      <Link to={`/book/${book.id}`} className="recipe-image-link">
+    <div className="book-card">
+      <Link to={`/book/${book.id}`} className="book-image-link">
         <img 
           src={thumbnail} 
           alt={title} 
-          className="recipe-image" 
+          className="book-image" 
           onError={(e) => {
             e.target.onerror = null; 
             e.target.src = 'https://placehold.co/200x300?text=Нет+обложки';
           }}
         />
       </Link>
-      <div className="recipe-info">
-        <h3 className="recipe-title">{title}</h3>
-        <p className="recipe-category">{author}</p>
-        <p className="recipe-category" style={{ fontSize: '0.8em', color: '#666' }}>{categories}</p>
-        <div className="recipe-actions">
+      <div className="book-info">
+        <h3 className="book-title">{title}</h3>
+        <p className="book-category">{author}</p>
+        <p className="book-category" style={{ fontSize: '0.8em', color: '#666' }}>{categories}</p>
+        <div className="book-actions">
           <Link to={`/book/${book.id}`} className="view-btn">Подробнее</Link>
           <button 
             className="favorite-btn" 

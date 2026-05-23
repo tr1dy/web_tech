@@ -28,7 +28,7 @@ const Search = () => {
     if (!searchTerm.trim()) return;
     
     setLoading(true);
-    setActiveCategory(''); // Reset category when searching by text
+    setActiveCategory('');
     const data = await fetchBooksByName(searchTerm);
     setBooks(data);
     setLoading(false);
@@ -36,7 +36,7 @@ const Search = () => {
 
   const handleCategoryClick = async (categoryName) => {
     setActiveCategory(categoryName);
-    setSearchTerm(''); // Reset search term when clicking category
+    setSearchTerm('');
     setLoading(true);
     const data = await fetchBooksByCategory(categoryName);
     setBooks(data);
@@ -92,7 +92,7 @@ const Search = () => {
         ) : (
           <>
             {books && books.length > 0 ? (
-              <div className="recipes-grid">
+              <div className="books-grid">
                 {books.map(book => (
                   <BookCard 
                     key={book.id} 

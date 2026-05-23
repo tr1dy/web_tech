@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { fetchBookById } from '../api/api';
 import { FavoritesContext } from '../context/FavoritesContext';
 import { AuthContext } from '../context/AuthContext';
@@ -8,6 +8,8 @@ import './BookDetails.css';
 
 const BookDetails = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const coverFromSearch = location.state?.coverUrl;
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,19 +44,19 @@ const BookDetails = () => {
 
   const title = book.volumeInfo?.title || 'Без названия';
   const author = book.volumeInfo?.authors?.join(', ') || 'Неизвестный автор';
-  const thumbnail = book.volumeInfo?.imageLinks?.thumbnail || 'https://placehold.co/200x300?text=Нет+обложки';
+  const thumbnail = coverFromSearch || book.volumeInfo?.imageLinks?.thumbnail || 'https://placehold.co/200x300?text=Нет+обложки';
   const categories = book.volumeInfo?.categories?.join(', ') || 'Жанр не указан';
   const description = book.volumeInfo?.description || 'Описание отсутствует.';
   const publishedDate = book.volumeInfo?.publishedDate || 'Неизвестно';
   const previewLink = book.volumeInfo?.previewLink;
 
   return (
-    <div className="recipe-details-container">
+    <div className="book-details-container">
       <button className="back-btn" onClick={() => navigate(-1)}>
         <FaArrowLeft /> Назад
       </button>
 
-      <div className="recipe-header">
+      <div className="book-header">
         <img 
           src={thumbnail} 
           alt={title} 
@@ -64,7 +66,7 @@ const BookDetails = () => {
             e.target.src = 'https://placehold.co/200x300?text=Нет+обложки';
           }}
         />
-        <div className="recipe-title-section">
+        <div className="book-title-section">
           <h2>{title}</h2>
           <p className="tags">{author} | {categories}</p>
           <button className="favorite-action-btn" onClick={handleToggleFavorite}>
@@ -77,7 +79,7 @@ const BookDetails = () => {
         </div>
       </div>
 
-      <div className="recipe-content">
+      <div className="book-content">
         <div className="ingredients">
           <h3>Информация</h3>
           <ul>

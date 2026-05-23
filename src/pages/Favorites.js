@@ -35,7 +35,7 @@ const Favorites = () => {
           <p>Перейдите на страницу <Link to="/search">Поиска</Link>, чтобы найти интересные книги для сохранения!</p>
         </div>
       ) : (
-        <div className="recipes-grid">
+        <div className="books-grid">
           {favorites.map(book => (
             <BookCard 
               key={book.id} 

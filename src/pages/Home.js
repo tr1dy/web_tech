@@ -52,7 +52,7 @@ const Home = () => {
   };
 
   if (loading) {
-    return <div className="loading-state">Загрузка интересных книг...</div>;
+    return <div className="loading-state">Загружаем книги, подождите...</div>;
   }
 
   return (
@@ -62,7 +62,7 @@ const Home = () => {
         <p>Найдите лучшие произведения для чтения на любой вкус.</p>
       </div>
       
-      <div className="recipes-grid">
+      <div className="books-grid">
         {books.map(book => (
           <BookCard 
             key={book.id} 
